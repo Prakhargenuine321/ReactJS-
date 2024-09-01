@@ -8,13 +8,37 @@ function App() {
   //value page maein update nahi ho rhi hai.
 
   //2)so we are using "hooks"
-  let [counter, setCounter] = useState(15);
+  let [counter, setCounter] = useState(15); //"counter" -->current value and "setCounter" -->function to update the state
 
   const addValue = () => {
     if (counter < 20) {
       console.log(counter);
       counter = counter + 1;
-      setCounter(counter);
+      setCounter(counter); //jab hum setCounter call karte hain react queues a state update and re-render component.
+      //But yaeh update turant nahi hota hai woh update ko queue maein rakhta hai and re-render kae time par 
+      //woh queue of process ko process karta hai to determine "new-state".
+
+      //yahan ppar aek important interview question hai ki agar hum kuch aisa kar daein-->
+      // setCounter(counter + 1); //16
+      // setCounter(counter + 1); //16
+      // setCounter(counter + 1); //16
+      // setCounter(counter + 1); //16
+
+      //toh value kya hogi
+
+      // setCounter((prevCounter) => prevCounter + 1);
+      // setCounter((prevCounter) => prevCounter + 1);
+      // setCounter((prevCounter) => prevCounter + 1);
+      // setCounter((prevCounter) => prevCounter + 1);
+
+      //so first waale maein it will be "16" and uskae baad wale maein bhi it will be "16" 
+      //because "counter" ki state update schedule hui hai but abhi update nahi hui hai.
+
+      //and second waale maein "previous state" ka use kiya ja raha to compute "newState" 
+      //har aek setCounter correctly update karega based on latest state kyunki woh "counter"
+      //ki state value par rely nahi kar raha hai.
+
+      /* but yaad rakhna above method is not good so try to avoid it! */
     }
 
     //3)you can also do it like as
