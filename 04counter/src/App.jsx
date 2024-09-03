@@ -16,7 +16,7 @@ function App() {
       counter = counter + 1;
       setCounter(counter); //jab hum setCounter call karte hain react queues a state update and re-render component.
       //But yaeh update turant nahi hota hai woh update ko queue maein rakhta hai and re-render kae time par 
-      //woh queue of process ko process karta hai to determine "new-state".
+      //woh queue of states ko process karta hai to determine "new-state".
 
       //yahan ppar aek important interview question hai ki agar hum kuch aisa kar daein-->
       // setCounter(counter + 1); //16
